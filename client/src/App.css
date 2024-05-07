@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu Sans Mono", monospace;
+}
+:root {
+  --primaryColor: #007bff;
+  --hoverColor: #4b9546;
+  --green : rgb(0, 255, 0);
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+  --greyText: rgb(130, 130, 130);
+  --inputColor:rgb(208, 61, 61);
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize:1.5rem;
+  --h2FontSize:1.25rem;
+  --h3FontSize:1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+
+  
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.grit {
+  display: grid;
+  align-items: center;
+  gap:1.5rem;
+}
+
+html {
+  font-size:  90%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.icon {
+  font-size: var(--h2FontSize);
+  cursor: pointer;
+}
+
+img, video {
+  height: auto;
+  width: 100%;
+}
+
+.message {
+  display: none;
+}
+
+.showMessage {
+  display: block;
+  color: var(--white);
+  background: red;
+  border-radius: 3px;
+  text-align: center;
+
+}
+
+.btn {
+  border :none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: .8rem 1rem;
+  color: var(--greyText);
+
+}
+
+.btn .icon {
+  margin-left: .5rem;
+}
+
+.btn:hover {
+  color: var(--primaryColor);
+  background: var(--green);
+}
