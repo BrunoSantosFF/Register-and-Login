@@ -1,19 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap");
-* {
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap');
+
+*{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Ubuntu Sans Mono", monospace;
 }
-
 :root {
   --primaryColor: #007bff;
   --hoverColor: #4b9546;
-  --green: rgb(0, 255, 0);
+  --green : rgb(0, 255, 0);
   --white: rgb(255, 255, 255);
   --black: rgb(0, 0, 0);
   --greyText: rgb(130, 130, 130);
   --inputColor:rgb(208, 61, 61);
+
   --biggestFontSize: 2.5rem;
   --h1FontSize:1.5rem;
   --h2FontSize:1.25rem;
@@ -21,6 +22,8 @@
   --normalFontSize: 0.938rem;
   --smallFontSize: 0.813rem;
   --smallestFontSize: 0.75rem;
+
+  
 }
 
 .flex {
@@ -31,11 +34,11 @@
 .grit {
   display: grid;
   align-items: center;
-  gap: 1.5rem;
+  gap:1.5rem;
 }
 
 html {
-  font-size: 90%;
+  font-size:  90%;
 }
 
 a {
@@ -66,22 +69,24 @@ img, video {
   background: red;
   border-radius: 3px;
   text-align: center;
+
 }
 
 .btn {
-  border: none;
+  border :none;
   outline: none;
   cursor: pointer;
   border-radius: 8px;
-  padding: 0.8rem 1rem;
+  padding: .8rem 1rem;
   color: var(--greyText);
+
 }
 
 .btn .icon {
-  margin-left: 0.5rem;
+  margin-left: .5rem;
 }
 
 .btn:hover {
   color: var(--primaryColor);
   background: var(--green);
-}/*# sourceMappingURL=App.css.map */
+}
