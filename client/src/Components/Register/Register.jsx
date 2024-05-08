@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Register.css'
 import '../../App.css'
 import {Link} from 'react-router-dom'
+import Axios from 'axios'
 
 
 import video from '../../LoginAssets/videofundo.mp4'
@@ -13,6 +14,23 @@ import { CiLogin } from "react-icons/ci";
 import { FaUserShield } from "react-icons/fa";
 
 function Register() {
+
+  const [email, setEmail] = useState('')
+  const [username, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+
+  const createUser = () => {
+      Axios.post('http://localhost:3000/register',
+        {
+          Email: email,
+          UserName: username,
+          PassWord: password
+        }
+      ).then(() => {
+        console.log('User has been created');
+      })
+  }
+
   return (
     <div className='registerPage flex'>
       <div className="container flex">
@@ -45,7 +63,10 @@ function Register() {
               <label htmlFor='email'>Email</label>
               <div className='input flex'>
                   <HiOutlineMail className='icon'/>
-                  <input type='text' id='email' placeholder='Enter Email'/>
+                  <input type='text' id='email' placeholder='Enter Email' onChange={(e) => {
+                    setEmail(e.target.value)
+                  } 
+                  }/>
               </div>
             </div>
 
@@ -53,7 +74,9 @@ function Register() {
               <label htmlFor='username'>Username</label>
               <div className='input flex'>
                   <FaUserShield className='icon'/>
-                  <input type='text' id='username' placeholder='Enter Username'/>
+                  <input type='text' id='username' placeholder='Enter Username' onChange={(e) => {
+                    setUserName(e.target.value)
+                  }} />
               </div>
             </div>
 
@@ -61,11 +84,13 @@ function Register() {
               <label htmlFor='password'>Password</label>
               <div className='input flex'>
                   <RiLockPasswordFill className='icon' /> 
-                  <input type='password' id='password' placeholder='Enter Password'/>
+                  <input type='password' id='password' placeholder='Enter Password' onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}/>
               </div>
             </div>
 
-            <button type='submit' className='btn flex'>
+            <button type='submit' className='btn flex' onClick={createUser}>
               <span>Register</span>
               <CiLogin className='icon'/>
             </button>

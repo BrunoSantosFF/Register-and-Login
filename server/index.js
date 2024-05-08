@@ -19,3 +19,12 @@ const db = mysql.createConnection(
   }
 )
 
+app.post('/register', (request,response) => {
+
+  const sentEmail =  request.body.Email
+  const sentUserName =  request.body.UserName
+  const sentPassword =  request.body.PassWord
+
+  const SQL = '' //1:10
+
+})
