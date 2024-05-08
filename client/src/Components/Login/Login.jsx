@@ -4,7 +4,7 @@ import './Login.css'
 import '../../App.css'
 
 import video from '../../LoginAssets/videofundo.mp4'
-import logo from '../../LoginAssets/logo2.jpeg'
+import logo from '../../LoginAssets/logo3.png'
 
 import { FaUserShield } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -20,8 +20,8 @@ function Login() {
             <video src={video} autoPlay muted loop></video>
 
             <div className="textDiv">
-              <h2 className='title'> Create and sell extraodinary products</h2>
-              <p>Adopt the peace od nature</p>
+              <h2 className='title'> Let's rate your films</h2>
+              <p>Only here</p>
             </div>
 
             <div className="footerDiv flex">
@@ -39,7 +39,7 @@ function Login() {
           </div>
 
           <form action="" className='form grid'>
-            <span> Login Status will go here</span>
+            <span className='showMessage'> Login Here</span>
             <div className='inputDiv'>
               <label htmlFor='username'>Username</label>
               <div className='input flex'>
