@@ -1,30 +1,66 @@
-const express =  require('express')
-const mysql =  require('mysql')
-const cors =  require('cors')
+const express = require('express')
+const app = express()
+const mysql = require('mysql')
+const cors = require('cors')
 
-const app =  express()
+app.use(express.json())
+app.use(cors())
 
-//check runing
-app.listen( 3000, () => {
-  console.log("Runing port 3000");
+
+app.listen(3002, () => {
+  console.log("Entrou no server");
 })
 
-//db (mysql)
-const db = mysql.createConnection(
-  {
-    user: 'root',
-    host: 'localhost',
-    password:'',
-    database:'register_login_db',
-  }
-)
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password:'root',
+  database:'urubuflix',
+})
 
-app.post('/register', (request,response) => {
 
-  const sentEmail =  request.body.Email
-  const sentUserName =  request.body.UserName
-  const sentPassword =  request.body.PassWord
+app.post('/register', (req,res)=>{
+  const sentEmail = req.body.Email
+  const sentUserName = req.body.UserName
+  const sentPassword = req.body.Password
 
-  const SQL = '' //1:10
+
+  const sql = 'INSERT INTO users (email, username, password) VALUES (?,?,?)'
+  const values = [sentEmail,sentUserName,sentPassword]
+
+  db.query(sql, values, (err, results) => {
+    if (err){
+      res.send(err)
+    }
+    else {
+      console.log('User inserted secccessfully!!')
+      res.send({message: 'User added!'})
+    }
+  })
+
+
+})
+
+//credentials
+app.post('/login', (req, res) => {
+ 
+  const sentUserName = req.body.LoginUserName
+  const sentPassword = req.body.LoginPassword
+
+
+  const sql = 'SELECT * FROM users WHERE username = ? && password = ?'
+  const values = [sentUserName,sentPassword]
+
+  db.query(sql, values,(err, results) => {
+    if (err){
+      res.send({error: err})
+    }
+    if (results.length > 0){
+      res.send(results)
+    }
+    else {
+      res.send({message: `Credenditals Don't match`})
+    }
+  })
 
 })

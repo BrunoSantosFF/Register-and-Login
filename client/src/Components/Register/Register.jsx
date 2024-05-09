@@ -16,15 +16,15 @@ import { FaUserShield } from "react-icons/fa";
 function Register() {
 
   const [email, setEmail] = useState('')
-  const [username, setUserName] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
   const createUser = () => {
-      Axios.post('http://localhost:3000/register',
+      Axios.post('http://localhost:3002/register',
         {
           Email: email,
-          UserName: username,
-          PassWord: password
+          UserName: userName,
+          Password: password
         }
       ).then(() => {
         console.log('User has been created');
@@ -63,10 +63,9 @@ function Register() {
               <label htmlFor='email'>Email</label>
               <div className='input flex'>
                   <HiOutlineMail className='icon'/>
-                  <input type='text' id='email' placeholder='Enter Email' onChange={(e) => {
-                    setEmail(e.target.value)
-                  } 
-                  }/>
+                  <input type='text' id='email' placeholder='Enter Email' onChange={(event) => {
+                    setEmail(event.target.value)
+                  }} />
               </div>
             </div>
 
@@ -74,8 +73,8 @@ function Register() {
               <label htmlFor='username'>Username</label>
               <div className='input flex'>
                   <FaUserShield className='icon'/>
-                  <input type='text' id='username' placeholder='Enter Username' onChange={(e) => {
-                    setUserName(e.target.value)
+                  <input type='text' id='username' placeholder='Enter Username' onChange={(event) => {
+                    setUserName(event.target.value)
                   }} />
               </div>
             </div>
@@ -84,8 +83,8 @@ function Register() {
               <label htmlFor='password'>Password</label>
               <div className='input flex'>
                   <RiLockPasswordFill className='icon' /> 
-                  <input type='password' id='password' placeholder='Enter Password' onChange={(e) => {
-                    setPassword(e.target.value)
+                  <input type='password' id='password' placeholder='Enter Password' onChange={(event) => {
+                    setPassword(event.target.value)
                   }}/>
               </div>
             </div>

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
+import Axios from 'axios'
 import './Login.css'
 import '../../App.css'
 
@@ -12,6 +13,22 @@ import { CiLogin } from "react-icons/ci";
 
 
 function Login() {
+
+  const [loginuserName, setLoginUserName] = useState('')
+  const [loginpassword, setLoginPassword] = useState('')
+
+  const createUser = (e) => {
+      e.preventDefault();
+      
+      Axios.post('http://localhost:3002/login',
+        {
+          LoginUserName: loginuserName,
+          LoginPassword: loginpassword
+        }
+      ).then((response) => {
+        console.log(response);
+      })
+  }
   return (
     <div className='loginPage flex'>
       <div className="container flex">
@@ -39,12 +56,14 @@ function Login() {
           </div>
 
           <form action="" className='form grid'>
-            <span className='showMessage'> Login Here</span>
+            {/*<span className='showMessage'> Login Here</span>*/}
             <div className='inputDiv'>
               <label htmlFor='username'>Username</label>
               <div className='input flex'>
                   <FaUserShield className='icon'/>
-                  <input type='text' id='username' placeholder='Enter Username'/>
+                  <input type='text' id='username' placeholder='Enter Username' onChange={(event) => {
+                    setLoginUserName(event.target.value)
+                  }}/>
               </div>
             </div>
 
@@ -52,11 +71,13 @@ function Login() {
               <label htmlFor='password'>Password</label>
               <div className='input flex'>
                   <RiLockPasswordFill className='icon' /> 
-                  <input type='password' id='password' placeholder='Enter Password'/>
+                  <input type='password' id='password' placeholder='Enter Password' onChange={(event) => {
+                    setLoginPassword(event.target.value)
+                  }}/>
               </div>
             </div>
 
-            <button type='submit' className='btn flex'>
+            <button type='submit' className='btn flex' onClick={createUser}>
               <span>Login</span>
               <CiLogin className='icon'/>
             </button>
