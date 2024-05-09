@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import React, {useEffect,useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import Axios from 'axios'
 import './Login.css'
 import '../../App.css'
@@ -16,19 +16,45 @@ function Login() {
 
   const [loginuserName, setLoginUserName] = useState('')
   const [loginpassword, setLoginPassword] = useState('')
+  const navigateTo = useNavigate();
+
+  const [loginStatus, setLoginStatus] = useState('')
+  const [statusHolder, setstatusHolder] =  useState('message')
 
   const createUser = (e) => {
       e.preventDefault();
-      
+
       Axios.post('http://localhost:3002/login',
         {
           LoginUserName: loginuserName,
           LoginPassword: loginpassword
         }
       ).then((response) => {
-        console.log(response);
+        if (response.data.message){
+          navigateTo('/')
+          //console.log(response.data.message);
+          setLoginStatus(`Credentials don't Exist !!`)
+        }
+        else {
+          navigateTo('/dashboard')
+        }
       })
   }
+
+  useEffect(() => {
+    if (loginStatus !== ''){
+      setstatusHolder('showMessage')
+      setTimeout(() => {
+        setstatusHolder('message')
+      },4000)
+    }
+  },[loginStatus])
+
+  const onSubmit = () => {
+    setLoginPassword('')
+    setLoginUserName('')
+  }
+
   return (
     <div className='loginPage flex'>
       <div className="container flex">
@@ -55,8 +81,8 @@ function Login() {
               <h3>Welcome Back!!!</h3>
           </div>
 
-          <form action="" className='form grid'>
-            {/*<span className='showMessage'> Login Here</span>*/}
+          <form action="" className='form grid' onSubmit={onSubmit}>
+            <span className={statusHolder}>{loginStatus}</span>
             <div className='inputDiv'>
               <label htmlFor='username'>Username</label>
               <div className='input flex'>

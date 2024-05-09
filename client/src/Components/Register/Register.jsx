@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './Register.css'
 import '../../App.css'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import Axios from 'axios'
 
 
@@ -18,8 +18,11 @@ function Register() {
   const [email, setEmail] = useState('')
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
+  const navigateTo = useNavigate();
 
-  const createUser = () => {
+  const createUser = (e) => {
+
+    e.preventDefault()
       Axios.post('http://localhost:3002/register',
         {
           Email: email,
@@ -27,7 +30,10 @@ function Register() {
           Password: password
         }
       ).then(() => {
-        console.log('User has been created');
+        navigateTo('/')
+        setEmail('')
+        setPassword('')
+        setUserName('')
       })
   }
 
