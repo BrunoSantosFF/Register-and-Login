@@ -5,7 +5,7 @@ import './Login.css'
 import '../../App.css'
 
 import video from '../../LoginAssets/videofundo.mp4'
-import logo from '../../LoginAssets/logo3.png'
+import logo from '../../LoginAssets/urubuzao.png'
 
 import { FaUserShield } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";

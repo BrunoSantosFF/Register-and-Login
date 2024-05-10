@@ -7,13 +7,13 @@
   font-family: "Ubuntu Sans Mono", monospace;
 }
 :root {
-  --primaryColor: #007bff;
-  --hoverColor: #4b9546;
-  --green : rgb(0, 255, 0);
-  --blue: rgb(91, 169, 205);
+  --primaryColor: #ff0000;
+  --hoverColor: #db3a3a;
+  --green : rgb(0, 0, 0);
+  --blue: rgb(206, 137, 137);
   --black: rgb(0, 0, 0);
-  --greyText: rgb(130, 130, 130);
-  --inputColor:rgb(208, 61, 61);
+  --greyText: rgb(237, 21, 14);
+  --inputColor:rgb(225, 211, 211);
 
   --biggestFontSize: 2.5rem;
   --h1FontSize:1.5rem;
@@ -23,7 +23,6 @@
   --smallFontSize: 0.813rem;
   --smallestFontSize: 0.75rem;
 
-  
 }
 
 .flex {
@@ -92,14 +91,16 @@ img, video {
   background: var(--green);
 }
 
+
+
 .loginPage, .registerPage {
   height: 100vh;
   width: 100%;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 2px;
   overflow: hidden;
   box-shadow: 0 7px 50px rgb(0, 255, 0);
-  background: rgb(190, 190, 208);
+  background: #160d18;
 
   .container {
     height: 75vh;
@@ -107,7 +108,7 @@ img, video {
     margin: auto;
     justify-content: space-between;
     border-radius: 10px;
-    background: rgb(194, 104, 104);
+    background: #cdcdcd;
 
     .videoDiv {
       position: relative;
@@ -156,7 +157,7 @@ img, video {
         bottom: 10px;
         padding: 0 1rem;
         height: 60px;
-        background: #bcccde;
+        background: #1e1f1e;
         left: 10px;
         right: 10px;
         justify-content: space-between;
@@ -197,8 +198,8 @@ img, video {
         padding: 1.5rem 0;
 
         img {
-          width: 60%;
-          height: 100px;
+          width: 80%;
+          height: 120px;
           padding-bottom: 0.5rem;
         }
 
