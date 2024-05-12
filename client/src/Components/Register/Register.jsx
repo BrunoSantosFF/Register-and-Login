@@ -6,7 +6,7 @@ import Axios from 'axios'
 
 
 import video from '../../LoginAssets/videofundo.mp4'
-import logo from '../../LoginAssets/logo3.png'
+import logo from '../../LoginAssets/urubuzao.png'
 
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -22,6 +22,10 @@ function Register() {
 
   const createUser = (e) => {
 
+    if (!errorEmail(email)){
+      return;
+    }
+
     e.preventDefault()
       Axios.post('http://localhost:3002/register',
         {
@@ -34,7 +38,21 @@ function Register() {
         setEmail('')
         setPassword('')
         setUserName('')
+      }).catch(error => {
+        console.error('Erro ao enviar requisição POST:', error);
       })
+  }
+
+  function errorEmail (email){
+    const gmail = /@gmail\.com$/i;
+    const hotmail = /@hotmail\.com$/i;
+    
+    if (gmail.test(email) || hotmail.test(email)){
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   return (
@@ -63,14 +81,16 @@ function Register() {
               <h3>Let Us Know You</h3>
           </div>
 
-          <form action="" className='form grid'>
+          <form autoComplete='off' className='form grid'>
             
             <div className='inputDiv'>
               <label htmlFor='email'>Email</label>
               <div className='input flex'>
                   <HiOutlineMail className='icon'/>
-                  <input type='text' id='email' placeholder='Enter Email' onChange={(event) => {
+                  <input type='email' id='email' autoComplete="off" placeholder='Enter Email' onChange={(event) => {
+                    
                     setEmail(event.target.value)
+                    
                   }} />
               </div>
             </div>
