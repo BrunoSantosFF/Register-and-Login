@@ -6,17 +6,71 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-
-app.listen(3002, () => {
-  console.log("Entrou no server");
-})
-
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password:'root',
-  database:'urubuflix',
+  password:'root', //mudar para a senha do root do seu banco de dados
 })
+
+const nomeDoBancoDeDados = 'urubuflix';
+
+app.listen(3002, () => {
+  db.connect((err) =>{
+    if (err){
+      console.log('Error, could not connect to the database: ',err)
+
+      process.exit(1)//fecha a aplicação em caso de erro
+    }
+    else {
+      console.log('Connected to the database')
+    }
+  
+     // Verificar se o banco de dados já existe
+     db.query(`CREATE DATABASE IF NOT EXISTS ${nomeDoBancoDeDados}`, (err, result) => {
+      if (err) {
+          console.error('Erro ao criar o banco de dados:', err);
+          process.exit(1);//fecha a aplicação em caso de erro
+      }
+      if (result.warningCount === 0) {
+          console.log(`Banco de dados '${nomeDoBancoDeDados}' criado com sucesso!`);
+
+
+          db.query(`USE ${nomeDoBancoDeDados}`, (err, result) => {
+            if (err) {
+                console.error('Erro ao acessar banco: ', err);
+                return;
+            }
+            else{
+              console.log('Banco acessado com sucesso!')
+              db.query(`CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, nickname VARCHAR(255) NOT NULL)`, (err, result) => {
+              
+                if (err) {
+                    console.error('Erro ao criar a tabela: ', err);
+                    return;
+                }
+                else {console.log('Tabela criada com sucesso!')}
+              })
+            }
+          })
+
+      } else {
+          console.log(`Banco de dados '${nomeDoBancoDeDados}' já existe, criando conexão...`);
+          db.query(`USE ${nomeDoBancoDeDados}`, (err, result) => {
+            if (err) {
+                console.error('Erro ao acessar banco: ', err);
+                return;
+            }
+            else{
+              console.log('Banco acessado com sucesso!')
+            }
+          })
+      }
+
+    })
+  })
+})
+
+
 
 
 app.post('/register', (req,res)=>{
