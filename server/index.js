@@ -34,7 +34,7 @@ app.listen(3002, () => {
       if (result.warningCount === 0) {
           console.log(`Banco de dados '${nomeDoBancoDeDados}' criado com sucesso!`);
 
-
+          //acessa o banco
           db.query(`USE ${nomeDoBancoDeDados}`, (err, result) => {
             if (err) {
                 console.error('Erro ao acessar banco: ', err);
@@ -42,6 +42,7 @@ app.listen(3002, () => {
             }
             else{
               console.log('Banco acessado com sucesso!')
+              //cria a tabela
               db.query(`CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, nickname VARCHAR(255) NOT NULL)`, (err, result) => {
               
                 if (err) {
