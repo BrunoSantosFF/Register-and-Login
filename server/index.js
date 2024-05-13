@@ -25,10 +25,6 @@ app.post('/register', (req,res)=>{
   const sentPassword = req.body.Password
   const sentNickName = req.body.NickName
 
-  console.log(sentEmail);
-  console.log(sentUserName);
-  console.log(sentPassword);
-  console.log(sentNickName);
 
   const sql = 'INSERT INTO users (email, username, password,nickname) VALUES (?,?,?,?)'
   const values = [sentEmail,sentUserName,sentPassword,sentNickName]

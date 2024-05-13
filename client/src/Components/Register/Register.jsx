@@ -27,6 +27,7 @@ function Register() {
   const createUser = (e) => {
 
     if (!errorEmail(email)){
+      alert("Wroog Email")
       return;
     }
 
@@ -141,7 +142,7 @@ function Register() {
             </button>
 
             <span className='forgotPassword'>
-              Forgot your password? <a href=''>Click Here</a>
+            Forgot your password? <Link to={'/forgotPassword'}> Click Here</Link>
             </span>
 
           </form>

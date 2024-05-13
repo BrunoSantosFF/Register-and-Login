@@ -109,7 +109,7 @@ function Login() {
             </button>
 
             <span className='forgotPassword'>
-              Forgot your password? <a href=''>Click Here</a>
+              Forgot your password? <Link to={'/forgotPassword'}> Click Here</Link>
             </span>
 
           </form>

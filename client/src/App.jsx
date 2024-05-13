@@ -4,6 +4,7 @@ import Register from "./Components/Register/Register"
 import "./App.css"
 
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword"
 
 const router = createBrowserRouter(
   [
@@ -18,6 +19,10 @@ const router = createBrowserRouter(
     {
       path:'/dashboard',
       element: <div><Dashboard/></div>
+    },
+    {
+      path:'/forgotPassword',
+      element:<div><ForgotPassword/></div>
     }
   ]
 )
