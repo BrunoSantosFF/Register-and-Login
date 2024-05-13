@@ -12,13 +12,17 @@ import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { CiLogin } from "react-icons/ci";
 import { FaUserShield } from "react-icons/fa";
+import { CiUser } from "react-icons/ci";
 
 function Register() {
 
   const [email, setEmail] = useState('')
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
+  const [nickname, setNickname] = useState('')
   const navigateTo = useNavigate();
+
+  const [showText, setShowText] = useState(false)
 
   const createUser = (e) => {
 
@@ -31,6 +35,7 @@ function Register() {
         {
           Email: email,
           UserName: userName,
+          NickName: nickname,
           Password: password
         }
       ).then(() => {
@@ -38,6 +43,7 @@ function Register() {
         setEmail('')
         setPassword('')
         setUserName('')
+        setNickname('')
       }).catch(error => {
         console.error('Erro ao enviar requisição POST:', error);
       })
@@ -46,13 +52,18 @@ function Register() {
   function errorEmail (email){
     const gmail = /@gmail\.com$/i;
     const hotmail = /@hotmail\.com$/i;
-    
+
     if (gmail.test(email) || hotmail.test(email)){
       return true;
     }
     else {
       return false;
     }
+  }
+
+  function passMouseNickname(){
+    return <div className='text2'>What is your first nickname? Enter your first nickname to set up a nsecurity question for password recovery when necessary.</div>
+    
   }
 
   return (
@@ -88,9 +99,7 @@ function Register() {
               <div className='input flex'>
                   <HiOutlineMail className='icon'/>
                   <input type='email' id='email' autoComplete="off" placeholder='Enter Email' onChange={(event) => {
-                    
                     setEmail(event.target.value)
-                    
                   }} />
               </div>
             </div>
@@ -114,7 +123,18 @@ function Register() {
                   }}/>
               </div>
             </div>
-
+             
+            <div className='inputDiv'>
+              <label onMouseEnter={() => {setShowText(true)}} onMouseLeave={() => {setShowText(false)}} htmlFor='username'>What is your first nickname?</label>
+              {showText && passMouseNickname()}
+              <div className='input flex ' >
+                  <CiUser className='icon'/>
+                  <input type='text' id='nickname' placeholder='Enter nickname' onChange={(event) => {
+                    setNickname(event.target.value)
+                  }} />
+              </div>
+            </div>
+                   
             <button type='submit' className='btn flex' onClick={createUser}>
               <span>Register</span>
               <CiLogin className='icon'/>

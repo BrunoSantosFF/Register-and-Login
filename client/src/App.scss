@@ -10,7 +10,7 @@
   --primaryColor: #ff0000;
   --hoverColor: #db3a3a;
   --green : rgb(0, 0, 0);
-  --blue: rgb(206, 137, 137);
+  --blue: rgb(165, 187, 217);
   --black: rgb(0, 0, 0);
   --greyText: rgb(237, 21, 14);
   --inputColor:rgb(225, 211, 211);
@@ -62,6 +62,11 @@ img, video {
   display: none;
 }
 
+.text2 {
+  padding: 20px;
+  background-color: lightblue;
+  cursor: pointer;
+}
 .showMessage {
   display: block;
   color: var(--white);
@@ -139,15 +144,16 @@ img, video {
       }
 
       .textDiv {
+        background:rgba(255, 255, 255, 0.3) ;
         position: relative;
         .title {
-          color: var(--blue);
+          color: black;
           font-size: 35px;
           font-weight: 800;
         }
 
         p {
-          color: var(--blue);
+          color: black;
           padding:1rem ;
           font-weight: 400;
         }
