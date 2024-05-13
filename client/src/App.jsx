@@ -1,10 +1,12 @@
 import Dashboard from "./Components/Dashboard/Dashboard"
 import Login from "./Components/Login/Login"
 import Register from "./Components/Register/Register"
+import ForgotPassword from "./Components/ForgotPassword/ForgotPassword"
+import UpdatePassword from "./Components/ForgotPassword/UpdatePassword"
 import "./App.css"
 
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
-import ForgotPassword from "./Components/ForgotPassword/ForgotPassword"
+
 
 const router = createBrowserRouter(
   [
@@ -23,6 +25,10 @@ const router = createBrowserRouter(
     {
       path:'/forgotPassword',
       element:<div><ForgotPassword/></div>
+    },
+    {
+      path:'/updatePassword',
+      element:<div><UpdatePassword/></div>
     }
   ]
 )

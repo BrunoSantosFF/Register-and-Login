@@ -32,7 +32,6 @@ function Login() {
       ).then((response) => {
         if (response.data.message){
           navigateTo('/')
-          //console.log(response.data.message);
           setLoginStatus(`Credentials don't Exist !!`)
         }
         else {

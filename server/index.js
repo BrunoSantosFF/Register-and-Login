@@ -24,6 +24,7 @@ app.post('/register', (req,res)=>{
   const sentUserName = req.body.UserName
   const sentPassword = req.body.Password
   const sentNickName = req.body.NickName
+  
 
 
   const sql = 'INSERT INTO users (email, username, password,nickname) VALUES (?,?,?,?)'
@@ -51,6 +52,27 @@ app.post('/login', (req, res) => {
 
   const sql = 'SELECT * FROM users WHERE username = ? && password = ?'
   const values = [sentUserName,sentPassword]
+
+  db.query(sql, values,(err, results) => {
+    if (err){
+      res.send({error: err})
+    }
+    if (results.length > 0){
+      res.send(results)
+    }
+    else {
+      res.send({message: `Credenditals Don't match`})
+    }
+  })
+
+})
+
+app.post("/forgotPassword", (req, res) => {
+  const sentEmail = req.body.checkEmail
+  const sentNickName = req.body.checkNickname
+
+  const sql = 'SELECT * FROM users WHERE email = ? && nickname = ?'
+  const values = [sentEmail,sentNickName]
 
   db.query(sql, values,(err, results) => {
     if (err){

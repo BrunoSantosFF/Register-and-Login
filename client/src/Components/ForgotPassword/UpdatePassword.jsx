@@ -9,8 +9,7 @@ import { CiUser } from "react-icons/ci";
 import Axios from 'axios'
 
 
-function ForgotPassword() {
-
+function UpdatePassword() {
   const [email, setEmail] = useState('');
   const [nickname, setNickname] = useState('');
   const navigateTo = useNavigate();
@@ -79,4 +78,4 @@ function ForgotPassword() {
   )
 }
 
-export default ForgotPassword
+export default UpdatePassword
