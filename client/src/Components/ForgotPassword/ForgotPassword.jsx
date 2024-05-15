@@ -25,14 +25,13 @@ function ForgotPassword() {
           checkNickname: nickname
         }
       ).then((response) => {
-        if (response.data.message){
+        if (response.data.email !== email){
           
           alert("Sorry, the information you provided does not match the email associated with your security question.try again")
-          setEmail('')
-          setNickname('')
           navigateTo('/forgotPassword')
         }
         else {
+          
           navigateTo('/updatePassword')
         }
       })

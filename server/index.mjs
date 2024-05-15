@@ -98,12 +98,10 @@ app.post("/forgotPassword", async (req, res) => {
         nickname: sentNickName
       }
     })
-    if(user){
-      res.send(user)
-    }
-    else{
-      res.send({message: `Usuário não encontrado`})
-    }
+
+    //console.log(user.email);
+    res.send(user)
+    
   }
   catch(err){
     res.send({error: err})

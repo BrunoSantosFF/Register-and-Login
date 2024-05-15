@@ -2,7 +2,7 @@ import Dashboard from "./Components/Dashboard/Dashboard"
 import Login from "./Components/Login/Login"
 import Register from "./Components/Register/Register"
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword"
-import UpdatePassword from "./Components/ForgotPassword/UpdatePassword"
+import UpdatePassword from "./Components/UpdatePassword/UpdatePassword"
 import "./App.css"
 
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'

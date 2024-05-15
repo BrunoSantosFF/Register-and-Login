@@ -25,3 +25,13 @@ Before getting started, install the following dependencies using npm or yarn:
 Ensure you have the environment properly set up and database configurations to make the application work as expected.
 
 Happy coding!
+
+
+-- client : 
+npm init
+npm install
+npm run dev
+
+-- server : 
+npm install prisma
+npm run dev
