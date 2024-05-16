@@ -95,7 +95,6 @@ app.post("/forgotPassword", async (req, res) => {
     const user = await prisma.users.findFirst({
       where: {
         email: sentEmail,
-        nickname: sentNickName
       }
     })
 
@@ -105,5 +104,34 @@ app.post("/forgotPassword", async (req, res) => {
   }
   catch(err){
     res.send({error: err})
+  }
+})
+
+app.put("/updatePassword", async (req, res) => {
+  const sentEmail = req.body.Email
+  const sentPassword = req.body.Password
+
+  try{
+    const user = await prisma.users.findFirst({
+      where: {
+        email: sentEmail,
+      }
+    })
+
+    const x = await prisma.users.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        password: sentPassword
+      }
+    })
+
+
+    console.log(x);
+
+  }
+  catch(err){
+    console.log("Error update user: ", err);
   }
 })

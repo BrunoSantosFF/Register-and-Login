@@ -20,7 +20,12 @@ function UpdatePassword() {
     
     const response = await Axios.post('http://localhost:3002/forgotPassword')
 
-   
+    Axios.put('http://localhost:3002/updatePassword',
+        { 
+          Email : response.data.email,
+          Password: password
+        }
+      )
     
   }
 
