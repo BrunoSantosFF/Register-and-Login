@@ -35,3 +35,6 @@ npm run dev
 -- server : 
 npm install prisma
 npm run dev
+
+-- prisma (push db)
+npx prisma db push

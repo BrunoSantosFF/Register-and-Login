@@ -128,7 +128,7 @@ app.put("/updatePassword", async (req, res) => {
     })
 
 
-    console.log(x);
+    res.send(x)
 
   }
   catch(err){

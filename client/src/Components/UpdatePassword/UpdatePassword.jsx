@@ -25,11 +25,14 @@ function UpdatePassword() {
           Email : response.data.email,
           Password: password
         }
-      ).then (
-        {
-          
+      ).then ( (response) => {
+        if (response.data.password === ''){
+          alert('Empty Password')
         }
-      )
+        else {
+          navigateTo('/')
+        }
+      })
     
   }
 

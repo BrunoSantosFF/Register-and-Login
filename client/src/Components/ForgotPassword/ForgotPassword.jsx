@@ -11,7 +11,7 @@ import Axios from 'axios'
 
 function ForgotPassword() {
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('bruno@gmail.com');
   const [nickname, setNickname] = useState('');
   const navigateTo = useNavigate();
 
