@@ -25,6 +25,10 @@ function UpdatePassword() {
           Email : response.data.email,
           Password: password
         }
+      ).then (
+        {
+          
+        }
       )
     
   }
